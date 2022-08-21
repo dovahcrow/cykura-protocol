@@ -1,6 +1,5 @@
 ///! Contains functions for managing tick processes and relevant calculations
 ///!
-use crate::error::ErrorCode;
 use crate::libraries::{liquidity_math, tick_math};
 use anchor_lang::prelude::*;
 
@@ -71,7 +70,7 @@ impl TickState {
         tick_cumulative: i64,
         time: u32,
         upper: bool,
-        max_liquidity: u64,
+        _max_liquidity: u64,
     ) -> Result<bool> {
         let liquidity_gross_before = self.liquidity_gross;
         let liquidity_gross_after =

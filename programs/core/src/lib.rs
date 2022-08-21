@@ -526,7 +526,12 @@ pub mod cyclos_core {
             )
         };
         if exact_input {
-            msg!("amount to pay {}, delta 0 {}, delta 1 {}", amount_to_pay, amount_0_delta, amount_1_delta);
+            msg!(
+                "amount to pay {}, delta 0 {}, delta 1 {}",
+                amount_to_pay,
+                amount_0_delta,
+                amount_1_delta
+            );
             token::transfer(
                 CpiContext::new(
                     ctx.accounts.token_program.to_account_info(),
@@ -953,7 +958,7 @@ pub mod cyclos_core {
     }
 
     #[derive(Default)]
-    struct StepComputations {
+    pub struct StepComputations {
         // the price at the beginning of the step
         sqrt_price_start_x32: u64,
         // the next tick to swap to from the current tick in the swap direction
@@ -1873,7 +1878,11 @@ pub mod cyclos_core {
         core_position_owner.is_signer = true;
 
         msg!("withdrawing amounts {} {}", amount_0, amount_1);
-        msg!("vault balances {} {}", ctx.accounts.vault_0.amount, ctx.accounts.vault_1.amount);
+        msg!(
+            "vault balances {} {}",
+            ctx.accounts.vault_0.amount,
+            ctx.accounts.vault_1.amount
+        );
 
         let mut accounts = CollectContext {
             owner: Signer::try_from(&core_position_owner)?,
